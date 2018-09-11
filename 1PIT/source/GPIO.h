@@ -11,11 +11,13 @@
  */
 #ifndef GPIO_H_
 #define GPIO_H_
-extern MASK_PIN_SELECTED;
+
 
 
 #include "stdint.h"
 
+/** Constant used to be shifted to modify specific pin */
+#define MASK_PIN_SELECTED 0x00000001
 
 /** Constant that represent the clock enable for GPIO A */
 #define GPIO_CLOCK_GATING_PORTA 0x00000200
@@ -212,6 +214,6 @@ void GPIO_clear_pin(gpio_port_name_t portName, uint8_t pin);
  	 \param[in] pin Pin to be toggled.
  	 \return void
  */
-void GPIO_toogle_PIN(gpio_port_name_t portName, uint8_t pin);
+void GPIO_toogle_pin(gpio_port_name_t portName, uint8_t pin);
 
 #endif /* GPIO_H_ */

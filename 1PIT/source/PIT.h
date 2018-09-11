@@ -12,10 +12,9 @@
 
 /*! This enumerated constant are used to select the PIT to be used*/
 typedef enum {PIT_0,PIT_1,PIT_2,PIT_3} PIT_Timer_t;
-#define clock //pin del puerto
-//mascaras
 
-
+/** Constant that represent the clock enable for GPIO A */
+#define PIT_CLOCK_GATING 0x00800000
 /********************************************************************************************/
 /********************************************************************************************/
 /********************************************************************************************/
@@ -29,7 +28,12 @@ typedef enum {PIT_0,PIT_1,PIT_2,PIT_3} PIT_Timer_t;
  	 \param[in]  portName Port to be configured.
  	 \return void
  */
+
+void PIT0_IRQHandler(void);
+
+
 void PIT_delay(PIT_Timer_t pitTimer,float systemClock ,float perior);
+
 
 
 void PIT_clockGating(void);
@@ -37,7 +41,7 @@ void PIT_clockGating(void);
 uint8 PIT_interruptFlagStatus(void);
 
 
-uint8 PIT_getIntrStatus(void);
+uint8 PIT_getIntrStutus(void);
 
 void PIT_clear(void);
 
