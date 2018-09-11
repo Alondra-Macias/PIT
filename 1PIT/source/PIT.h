@@ -8,6 +8,8 @@
 #ifndef PIT_H_
 #define PIT_H_
 
+#include "MK64F12.h"
+
 #include "DataTypeDefinitions.h"
 
 /*! This enumerated constant are used to select the PIT to be used*/
@@ -32,16 +34,11 @@ typedef enum {PIT_0,PIT_1,PIT_2,PIT_3} PIT_Timer_t;
 void PIT0_IRQHandler(void);
 
 
-void PIT_delay(PIT_Timer_t pitTimer,float systemClock ,float perior);
-
-
+void PIT_delay(PIT_Timer_t pitTimer,float systemClock ,float periodo);
 
 void PIT_clockGating(void);
 
-uint8 PIT_interruptFlagStatus(void);
-
-
-uint8 PIT_getIntrStutus(void);
+uint8 PIT_getIntrStatus(void);
 
 void PIT_clear(void);
 
