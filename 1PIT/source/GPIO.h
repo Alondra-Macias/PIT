@@ -212,6 +212,6 @@ void GPIO_clear_pin(gpio_port_name_t portName, uint8_t pin);
  	 \param[in] pin Pin to be toggled.
  	 \return void
  */
-void GPIO_tooglePIN(gpio_port_name_t portName, uint8_t pin);
+void GPIO_toogle_PIN(gpio_port_name_t portName, uint8_t pin);
 
 #endif /* GPIO_H_ */

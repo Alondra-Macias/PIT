@@ -4,7 +4,7 @@
  *  Created on: 11/09/2018
  *      Author: AlondraItzel
  */
-
+#include "PIT.h"
 /*PIT_TFLG0 |= PIT_TFLG_TIF_MASK;
 PIT_TCTRL0; //read control register for clear PIT flag, this is silicon bug
 PIT_TCTRL0 &= ~(PIT_TCTRL_TIE_MASK);//enables PIT timer interrupt

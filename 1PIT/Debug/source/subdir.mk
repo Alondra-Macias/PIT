@@ -6,18 +6,21 @@
 C_SRCS += \
 ../source/GPIO.c \
 ../source/NVIC.c \
+../source/PIT.c \
 ../source/main.c \
 ../source/semihost_hardfault.c 
 
 OBJS += \
 ./source/GPIO.o \
 ./source/NVIC.o \
+./source/PIT.o \
 ./source/main.o \
 ./source/semihost_hardfault.o 
 
 C_DEPS += \
 ./source/GPIO.d \
 ./source/NVIC.d \
+./source/PIT.d \
 ./source/main.d \
 ./source/semihost_hardfault.d 
 

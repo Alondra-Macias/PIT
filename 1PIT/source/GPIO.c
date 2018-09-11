@@ -272,6 +272,31 @@ void GPIO_data_direction_pin(gpio_port_name_t portName, uint8_t state, uint8_t p
 			break;
 	}
 }
+void GPIO_toogle_PIN(gpio_port_name_t portName, uint8_t pin)
+{
+	uint32_t value = MASK_PIN_SELECTED;
+	value <<= pin;
+	switch (portName)
+	{
+		case (GPIO_A):
+			GPIOA->PTOR = value;
+			break;
+		case (GPIO_B):
+			GPIOB->PTOR = value;
+			break;
+		case (GPIO_C):
+			GPIOC->PTOR = value;
+			break;
+		case (GPIO_D):
+			GPIOD->PTOR = value;
+			break;
+		case (GPIO_E):
+			GPIOE->PTOR = value;
+			break;
+		default:
+			break;
+	}
+}
 
 
 
