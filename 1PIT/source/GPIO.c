@@ -13,47 +13,8 @@
 #include "GPIO.h"
 #include "Bits.h"
 
-extern uint8_t FlagPortC;
-extern uint8_t FlagPortA;
-
-void PORTC_IRQHandler()
-{
-	FlagPortC = TRUE;
-	GPIO_clear_interrupt(GPIO_C);
-
-}
 
 
-void PORTA_IRQHandler()
-{
-	FlagPortA = TRUE;
-	GPIO_clear_interrupt(GPIO_A);
-
-}
-
-
-void GPIO_clear_interrupt(gpio_port_name_t portName)
-{
-	switch(portName)/** Selecting the GPIO for clock enabling*/
-	{
-		case GPIO_A: /** GPIO A is selected*/
-			PORTA->ISFR=0xFFFFFFFF;
-			break;
-		case GPIO_B: /** GPIO B is selected*/
-			PORTB->ISFR=0xFFFFFFFF;
-			break;
-		case GPIO_C: /** GPIO C is selected*/
-			PORTC->ISFR = 0xFFFFFFFF;
-			break;
-		case GPIO_D: /** GPIO D is selected*/
-			PORTD->ISFR=0xFFFFFFFF;
-			break;
-		default: /** GPIO E is selected*/
-			PORTE->ISFR=0xFFFFFFFF;
-			break;
-
-	}// end switch
-}
 uint8_t GPIO_clock_gating(gpio_port_name_t portName)
 {
 	switch(portName)/** Selecting the GPIO for clock enabling*/

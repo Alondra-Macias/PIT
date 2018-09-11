@@ -12,6 +12,8 @@
 
 /*! This enumerated constant are used to select the PIT to be used*/
 typedef enum {PIT_0,PIT_1,PIT_2,PIT_3} PIT_Timer_t;
+#define clock //pin del puerto
+//mascaras
 
 
 /********************************************************************************************/
@@ -30,13 +32,12 @@ typedef enum {PIT_0,PIT_1,PIT_2,PIT_3} PIT_Timer_t;
 void PIT_delay(PIT_Timer_t pitTimer,float systemClock ,float perior);
 
 
-
 void PIT_clockGating(void);
 
 uint8 PIT_interruptFlagStatus(void);
 
 
-uint8 PIT_getIntrStutus(void);
+uint8 PIT_getIntrStatus(void);
 
 void PIT_clear(void);
 
