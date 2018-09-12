@@ -15,16 +15,16 @@ void PIT0_IRQHandler(void){
 	PIT->CHANNEL[PIT_0].TFLG |= PIT_TFLG_TIF_MASK;
 	PIT->CHANNEL[PIT_0].TCTRL;
 	/*Enables interrupts*/
-	PIT->CHANNEL[PIT_0].TCTRL |= PIT_TCTRL_TIE_MASK;
+	PIT->CHANNEL[PIT_0].TCTRL &= ~(PIT_TCTRL_TIE_MASK);
 	/*Enables timer*/
-	PIT->CHANNEL[PIT_0].TCTRL |= PIT_TCTRL_TEN_MASK;
+	PIT->CHANNEL[PIT_0].TCTRL &= ~(PIT_TCTRL_TEN_MASK);
 
 }
 
 void PIT_delay(PIT_Timer_t pitTimer,float systemClock ,float perior){
-	uint32 value = systemClock*perior;
+	uint32 value = systemClock*perior/2;
 	PIT->CHANNEL[PIT_0].LDVAL = value;
-
+	PIT->CHANNEL[PIT_0].TCTRL |= PIT_TCTRL_TIE_MASK;
 		/*Enables timer*/
 		PIT->CHANNEL[PIT_0].TCTRL |= PIT_TCTRL_TEN_MASK;
 
@@ -38,7 +38,7 @@ void PIT_delay(PIT_Timer_t pitTimer,float systemClock ,float perior){
 void PIT_clockGating(void){
 	SIM->SCGC6 = PIT_CLOCK_GATING;
 	PIT->MCR = 0;
-	PIT->CHANNEL[PIT_0].TCTRL |= PIT_TCTRL_TIE_MASK;
+
 }
 
 
