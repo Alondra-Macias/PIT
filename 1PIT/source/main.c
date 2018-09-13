@@ -49,7 +49,7 @@ int main(){
 	GPIO_clock_gating(GPIO_D);
 	GPIO_pin_control_register(GPIO_D,BIT0,&pinControlRegisterPORTD);
 	GPIO_data_direction_pin(GPIO_D,GPIO_OUTPUT,BIT0);
-	GPIO_set_pin(GPIO_D,BIT0);   //Enciende el bit0
+	GPIO_set_pin(GPIO_D,BIT0);   //Enciende el bit0 del puerto D
 
 	//PIT and interruptions setup
 	PIT_clockGating();
