@@ -41,15 +41,16 @@
 
 
 int main(){
-
+	/*Variable used to access to the Interruption Flag Status*/
 	uint8 pitIntrStatus = FALSE;
+	/*Constant used to configure PORTD as GPIO*/
 	gpio_pin_control_register_t pinControlRegisterPORTD = GPIO_MUX1;
 
 	//PortD setup
 	GPIO_clock_gating(GPIO_D);
 	GPIO_pin_control_register(GPIO_D,BIT0,&pinControlRegisterPORTD);
 	GPIO_data_direction_pin(GPIO_D,GPIO_OUTPUT,BIT0);
-	GPIO_set_pin(GPIO_D,BIT0);   //Enciende el bit0 del puerto D
+	GPIO_set_pin(GPIO_D,BIT0);   //turns on bit0 on PORTD
 
 	//PIT and interruptions setup
 	PIT_clockGating();
@@ -57,13 +58,15 @@ int main(){
 	EnableInterrupts;
 
     while(1) {
-
-    	GPIO_toogle_pin(GPIO_D,BIT0);        //Invierte el estado, lo apaga
+		/*Toggles output value on GPIOD, pin 0*/
+    	GPIO_toogle_pin(GPIO_D,BIT0);     
+		/*Makes sure to clear variable IntrStatus on PIT.c in a safe way before reading its status*/
         PIT_clear();
-
+		/*Reads value of variable IntrStatus for checking if an interruption has ocurred*/
     	pitIntrStatus = PIT_getIntrStatus();
+		/*Re-starts timer*/
     	PIT_delay(PIT_0,SYSTEM_CLOCK,DELAY);
-    	                               /*Waits for an interruption to occur*/
+    	/*Waits for an interruption to occur to refresh the pitIntrStatus value*/
     	do{
            pitIntrStatus = PIT_getIntrStatus();
     	}while(FALSE == pitIntrStatus);
